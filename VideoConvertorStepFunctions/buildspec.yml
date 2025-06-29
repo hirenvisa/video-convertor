@@ -22,8 +22,9 @@ phases:
       - dotnet restore
   build:
     commands:      
+      - echo "S3_BUCKET is $S3_BUCKET"
       - cd ./VideoConvertorStepFunctions
-      - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
+      - dotnet lambda package-ci --serverless-template serverless.template --template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
 
 artifacts:
   files:
