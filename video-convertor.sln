@@ -7,8 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VideoConvertorStepFunctions", "VideoConvertorStepFunctions", "{F081A348-427A-4845-81E6-FB0498950BA0}"
 	ProjectSection(SolutionItems) = preProject
-		buildspec.yml = buildspec.yml
-		serverless.template = serverless.template
+		VideoConvertorStepFunctions\buildspec.yml = VideoConvertorStepFunctions\buildspec.yml
+		VideoConvertorStepFunctions\serverless.template = VideoConvertorStepFunctions\serverless.template
+		VideoConvertorLayer.xml = VideoConvertorLayer.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitAudioFunction", "VideoConvertorStepFunctions\SplitAudioFunction\SplitAudioFunction.csproj", "{9047E072-C1F9-78B9-BA0F-E0A551B5C532}"
