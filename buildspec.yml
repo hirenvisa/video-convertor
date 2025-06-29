@@ -9,6 +9,8 @@ image: aws/codebuild/standard:7.0-1.0
 phases:
   install:
     commands:
+      - export HOME=/root
+      - export PATH="$PATH:/root/.dotnet/tools"
       - dotnet tool install -g Amazon.Lambda.Tools
   build:
     commands:
