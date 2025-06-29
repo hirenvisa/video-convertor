@@ -23,7 +23,7 @@ phases:
   build:
     commands:
       - echo "Packaging..."
-      - dotnet lambda package-ci \
+      - dotnet-lambda package-ci \
           --serverless-template serverless.template \
           --output-template serverless-output.template \
           --s3-bucket $S3_BUCKET \
