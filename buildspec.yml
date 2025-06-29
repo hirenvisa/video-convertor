@@ -22,11 +22,11 @@ phases:
       - dotnet restore
   build:
     commands:
-      - cd ./Code/VideoConvertor/VideoConvertorStepFunctions
+      - cd ./VideoConvertor/VideoConvertorStepFunctions
       - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
 
 artifacts:
   files:
-    - ./Code/VideoConvertor/VideoConvertorStepFunctions/serverless-output.template
+    - ./VideoConvertor/VideoConvertorStepFunctions/serverless-output.template
   discard-paths: yes
 
