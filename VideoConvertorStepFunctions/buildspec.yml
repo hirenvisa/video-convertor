@@ -2,32 +2,33 @@ version: 0.2
 
 env:
   variables:
+    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
     DOTNET_CLI_HOME: /root
   export:
     PATH: "/root/.dotnet/tools:$PATH"
-  parameter-store:    
-    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
-
-image: aws/codebuild/standard:7.0-1.0
 
 phases:
   install:
     runtime-versions:
       dotnet: 8.0
-    commands:      
-      - dotnet tool install -g Amazon.Lambda.Tools
-  
+    commands:
+      - dotnet tool install -g Amazon.Lambda.Tools --force
+
   pre_build:
     commands:
+      - echo "Restoring..."
       - dotnet restore
+
   build:
-    commands:      
-      - echo "S3_BUCKET is $S3_BUCKET"
-      - cd ./VideoConvertorStepFunctions
-      - dotnet lambda package-ci --serverless-template serverless.template --template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
+    commands:
+      - echo "Packaging..."
+      - dotnet lambda package-ci \
+          --serverless-template serverless.template \
+          --output-template serverless-output.template \
+          --s3-bucket $S3_BUCKET \
+          --s3-prefix VideoConvertorStepFunctions
 
 artifacts:
   files:
     - ./VideoConvertorStepFunctions/serverless-output.template
   discard-paths: yes
-
