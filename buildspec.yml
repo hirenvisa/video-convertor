@@ -1,6 +1,10 @@
 version: 0.1
 
 env:
+  variables:
+    DOTNET_CLI_HOME: /root
+  export:
+    PATH: "/root/.dotnet/tools:$PATH"
   parameter-store:    
     S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
 
@@ -8,11 +12,14 @@ image: aws/codebuild/standard:7.0-1.0
 
 phases:
   install:
-    commands:
-      - export HOME=/root      
+    runtime-versions:
+      dotnet: 8.0
+    commands:      
       - dotnet tool install -g Amazon.Lambda.Tools
-      - export PATH="$PATH:/root/.dotnet/tools"
-      - export DOTNET_CLI_HOME="$PATH:/root/.dotnet/tools"
+  
+  pre_build:
+    commands:
+      - dotnet restore
   build:
     commands:
       - cd ./Code/VideoConvertor/VideoConvertorStepFunctions
