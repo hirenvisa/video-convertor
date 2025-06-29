@@ -1,0 +1,73 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "Basic CloudFormation template for VideoConvertorStepFunctions",
+  
+  "Parameters": {
+    "Environment": {
+      "Type": "String",
+      "Default": "dev",
+      "Description": "Deployment environment (dev, prod, etc)"
+    }
+  },
+
+  "Resources": {
+    "SplitAudioFunction": {
+      "Type": "AWS::Serverless::Function",      
+      "Properties": {
+        "FunctionName": { "Fn::Sub": "SplitAudioFunction" },
+        "Handler": "SplitAudioFunction::SplitAudioFunction.Function::FunctionHandler",        
+        "Role": {
+            "Fn::GetAtt": [
+                "LambdaRole",
+                "Arn"
+            ]
+        },
+        "CodeUri": "./SplitAudioFunction",
+        "Runtime": "dotnet8",
+        "MemorySize": 512,
+        "Timeout": 60,
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_TABLE": "VideoMetadata"
+          }
+        }
+      }
+    },
+
+    "LambdaRole": {
+            "Type": "AWS::IAM::Role",
+            "Description" : "",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sts:AssumeRole"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+                    "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+                ]
+            }
+        }
+  },
+
+  "Outputs": {
+    "SplitAudioFunctionArn": {
+      "Description": "ARN of the SplitAudio Lambda Function",
+      "Value": { "Fn::GetAtt": ["SplitAudioFunction", "Arn"] }
+    }
+  }
+}
