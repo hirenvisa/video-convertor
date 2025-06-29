@@ -1,0 +1,19 @@
+version: 0.1
+
+env:
+  parameter-store:    
+    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
+
+phases:
+  install:
+    commands:
+      - dotnet tool install -g Amazon.Lambda.Tools
+  build:
+    commands:
+      - cd ./Code/VideoConvertor/VideoConvertorStepFunctions
+      - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
+
+artifacts:
+  files:
+    - ./Code/VideoConvertor/VideoConvertorStepFunctions/serverless-output.template
+  discard-paths: yes
