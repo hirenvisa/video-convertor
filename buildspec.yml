@@ -4,6 +4,8 @@ env:
   parameter-store:    
     S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
 
+image: aws/codebuild/standard:7.0-1.0
+
 phases:
   install:
     commands:
@@ -17,3 +19,4 @@ artifacts:
   files:
     - ./Code/VideoConvertor/VideoConvertorStepFunctions/serverless-output.template
   discard-paths: yes
+
