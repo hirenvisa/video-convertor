@@ -10,7 +10,7 @@ phases:
   install:
     commands:
       - export HOME=/root      
-      - dotnet tool install -g Amazon.Lambda.Tools --force
+      - dotnet tool install -g Amazon.Lambda.Tools
       - export PATH="$PATH:/root/.dotnet/tools"
       - export DOTNET_CLI_HOME="$PATH:/root/.dotnet/tools"
   build:
