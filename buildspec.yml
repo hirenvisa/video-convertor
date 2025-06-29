@@ -22,7 +22,7 @@ phases:
       - dotnet restore
   build:
     commands:
-      - tree
+      - dir
       - cd ./VideoConvertor/VideoConvertorStepFunctions
       - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions
 
