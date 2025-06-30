@@ -1,0 +1,26 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description"              : "",
+    "Parameters"               : {
+    },
+    "Resources"                : {
+        "SourceVideos" : {
+            "Type" : "AWS::S3::Bucket",
+            "Properties" : {
+                "BucketName" : "project-4004-source-videos",
+                "Tags": [
+                    { "Key": "project-id", "Value": "4004" },
+                    { "Key": "project", "Value": "video-convertor" }
+                ]
+            }
+        }
+    },
+    "Outputs"                  : {
+        "SourceVideosBucketName" : {
+            "Description" : "Name of the S3 bucket for storing source videos",
+            "Value"       : {
+                "Ref" : "SourceVideos"
+            }
+        }
+    }
+}
