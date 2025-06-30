@@ -27,7 +27,9 @@ phases:
       - echo "Packaging..."
       - export PATH="/root/.dotnet/tools:$PATH"
       - export HOME=/root 
+      - dotnet tool list -g
       - dotnet lambda package-ci \
+          --template serverless.template \   
           --serverless-template serverless.template \
           --output-template serverless-output.template \
           --s3-bucket $S3_BUCKET \
