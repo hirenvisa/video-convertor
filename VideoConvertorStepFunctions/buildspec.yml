@@ -1,10 +1,11 @@
 version: 0.2
 
 env:
-  variables:
-    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
+  variables:    
     DOTNET_CLI_HOME: /root
-    HOME: /root  
+    HOME: /root
+  parameter-store:
+    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
 
 phases:
   install:    
