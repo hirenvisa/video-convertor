@@ -14,8 +14,7 @@ phases:
       dotnet: 8.0
     commands:
       - dotnet --version
-      - dotnet tool install -g Amazon.Lambda.Tools
-      - curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 8.0 
+      - dotnet tool install -g Amazon.Lambda.Tools      
 
   pre_build:
     commands:
