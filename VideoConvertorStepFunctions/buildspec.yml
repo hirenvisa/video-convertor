@@ -11,8 +11,10 @@ phases:
     runtime-versions:
       dotnet: 8.0
     commands:
+      - curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --runtime dotnet --version 8.0.11 --install-dir /root/.dotnet
+      - export DOTNET_ROOT=/root/.dotnet
+      - export PATH="/root/.dotnet:$PATH"
       - dotnet --version
-      - export PATH="/root/.dotnet/tools:$PATH"
       - dotnet tool install -g Amazon.Lambda.Tools      
 
   pre_build:
