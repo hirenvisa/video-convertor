@@ -28,12 +28,14 @@ phases:
       - export PATH="/root/.dotnet/tools:$PATH"
       - export HOME=/root 
       - dotnet tool list -g
-      - dotnet lambda package-ci \
-          --template serverless.template \   
+      - pwd
+      - dir
+      - dotnet lambda package-ci \          
           --serverless-template serverless.template \
           --output-template serverless-output.template \
           --s3-bucket $S3_BUCKET \
-          --s3-prefix VideoConvertorStepFunctions
+          --s3-prefix VideoConvertorStepFunctions \
+          --template serverless.template
 
 artifacts:
   files:
