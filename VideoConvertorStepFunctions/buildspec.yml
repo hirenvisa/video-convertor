@@ -4,6 +4,7 @@ env:
   variables:
     S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
     DOTNET_CLI_HOME: /root
+    HOME: /root
   export:
     PATH: "/root/.dotnet/tools:$PATH"
 
