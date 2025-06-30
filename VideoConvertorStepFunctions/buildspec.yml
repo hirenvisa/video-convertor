@@ -4,9 +4,7 @@ env:
   variables:
     S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
     DOTNET_CLI_HOME: /root
-    HOME: /root
-  export:
-    PATH: "/root/.dotnet/tools:$PATH"
+    HOME: /root  
 
 phases:
   install:
@@ -14,6 +12,7 @@ phases:
       dotnet: 8.0
     commands:
       - dotnet --version
+      - export PATH="/root/.dotnet/tools:$PATH"
       - dotnet tool install -g Amazon.Lambda.Tools      
 
   pre_build:
@@ -24,6 +23,7 @@ phases:
   build:
     commands:
       - echo "Packaging..."
+      - export PATH="/root/.dotnet/tools:$PATH"
       - dotnet lambda package-ci \
           --serverless-template serverless.template \
           --output-template serverless-output.template \
