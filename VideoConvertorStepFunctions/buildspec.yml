@@ -28,8 +28,9 @@ phases:
       - export PATH="/root/.dotnet/tools:$PATH"
       - export HOME=/root 
       - dotnet tool list -g
+      - cd VideoConvertorStepFunctions
       - pwd
-      - dir
+      - dir      
       - dotnet lambda package-ci \          
           --serverless-template serverless.template \
           --output-template serverless-output.template \
