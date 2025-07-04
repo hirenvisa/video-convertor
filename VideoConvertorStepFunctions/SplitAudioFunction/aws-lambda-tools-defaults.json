@@ -15,7 +15,7 @@
     "function-handler"     : "SplitAudioFunction::SplitAudioFunction.Function::FunctionHandler",
     "framework"            : "net8.0",
     "function-name"        : "SplitAudioFunction",
-    "package-type"         : "Zip",
+    "package-type"         : "image",
     "function-role"        : "arn:aws:iam::414483037029:role/service-role/SplitAudioFunction-role-b5tu9rj6",
     "function-architecture" : "x86_64",
     "function-subnets"      : "",

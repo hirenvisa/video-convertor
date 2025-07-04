@@ -33,6 +33,10 @@ phases:
       - pwd
       - dir      
       - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions --template serverless.template
+  
+  deploy:
+    commands:
+      - aws cloudformation deploy --template-file VideoConvertorStepFunctions/serverless-output.template --Video-Convertor-Stack  
 
 artifacts:
   files:
