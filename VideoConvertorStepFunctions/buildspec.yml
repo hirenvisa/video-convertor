@@ -37,7 +37,7 @@ phases:
     commands:
       - pwd
       - dir
-      - aws cloudformation deploy --template-file serverless-output.template --stack-name Video-Convertor-Stack  
+      - aws cloudformation deploy --template-file serverless-output.template --stack-name Video-Convertor-Stack --capabilities CAPABILITY_IAM
 
 artifacts:
   files:
