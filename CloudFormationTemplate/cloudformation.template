@@ -7,11 +7,7 @@
         "SourceVideos" : {
             "Type" : "AWS::S3::Bucket",
             "Properties" : {
-                "BucketName" : "project-4004-source-videos",
-                "Tags": [
-                    { "Key": "project-id", "Value": "4004" },
-                    { "Key": "project", "Value": "video-convertor" }
-                ]
+                "BucketName" : "project-4004-source-videos"                
             }
         }
     },
