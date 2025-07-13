@@ -32,12 +32,12 @@ phases:
       - cd VideoConvertorStepFunctions
       - pwd
       - dir      
-      - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions --template serverless.template
+      - dotnet lambda package-ci --serverless-template serverless.template --output-template serverless-output.template --s3-bucket $S3_BUCKET --s3-prefix VideoConvertorStepFunctions --template serverless.template --verbose
   post_build:
     commands:
       - pwd
       - dir
-      - aws cloudformation deploy --template-file serverless-output.template --stack-name Video-Convertor-Stack --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --templat1e-file serverless-output.template --stack-name Video-Convertor-Stack --capabilities CAPABILITY_IAM
 
 artifacts:
   files:
