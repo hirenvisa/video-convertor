@@ -5,8 +5,7 @@ env:
     DOTNET_CLI_HOME: /root
     HOME: /root
   parameter-store:
-    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
-    $S3_SOURCE_BUCKET_NAME: "/VideoConvertor/source-videoes-bucket-name"
+    S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"    
 
 phases:
   install:    
