@@ -31,6 +31,15 @@
           "Variables": {
             "DYNAMODB_TABLE": "VideoMetadata"
           }
+        },
+        "Events": {
+          "S3PutEvent": {
+            "Type": "S3",
+            "Properties": {
+              "Bucket": "s3/videoconvertor-artifactstorebucket",
+              "Events": "s3:ObjectCreated:Put"
+            }
+          }
         }
       }
     },
