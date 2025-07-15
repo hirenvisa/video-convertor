@@ -8,10 +8,6 @@
       "Type": "String",
       "Default": "dev",
       "Description": "Deployment environment (dev, prod, etc)"
-    },
-    "BucketNameParameter": {
-      "Type": "AWS::SSM::Parameter::Value<String>",
-      "Description": "S3 bucket name from SSM Parameter Store"
     }
   },
 
@@ -40,7 +36,7 @@
           "S3PutEvent": {
             "Type": "S3",
             "Properties": {
-                "Bucket": { "Fn::Sub": "${BucketNameParameter}" },
+                "Bucket": "source-videoes",
                 "Events": "s3:ObjectCreated:Put"
              }
           }
