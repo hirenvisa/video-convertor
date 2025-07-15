@@ -8,6 +8,10 @@
       "Type": "String",
       "Default": "dev",
       "Description": "Deployment environment (dev, prod, etc)"
+    },
+    "BucketNameParameter": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Description": "S3 bucket name from SSM Parameter Store"
     }
   },
 
@@ -36,9 +40,9 @@
           "S3PutEvent": {
             "Type": "S3",
             "Properties": {
-              "Bucket": "s3/videoconvertor-artifactstorebucket",
-              "Events": "s3:ObjectCreated:Put"
-            }
+                "Bucket": { "Fn::Sub": "${BucketNameParameter}" },
+                "Events": "s3:ObjectCreated:Put"
+             }
           }
         }
       }

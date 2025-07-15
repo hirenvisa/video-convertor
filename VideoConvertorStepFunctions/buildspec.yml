@@ -6,6 +6,7 @@ env:
     HOME: /root
   parameter-store:
     S3_BUCKET: "/VideoConvertor/ArtifactsStoreBucket"
+    $S3_SOURCE_BUCKET_NAME: "/VideoConvertor/source-videoes-bucket-name"
 
 phases:
   install:    
@@ -36,7 +37,7 @@ phases:
     commands:
       - pwd
       - dir
-      - aws cloudformation deploy --template-file serverless-output.template --stack-name Video-Convertor-Stack --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file serverless-output.template --stack-name Video-Convertor-Stack --capabilities CAPABILITY_IAM --parameter-overrides ParameterKey=BucketNameParameter,ParameterValue=S3_SOURCE_BUCKET ParameterKey=BucketNameParameter,ParameterValue=$S3_SOURCE_BUCKET_NAME 
 
 artifacts:
   files:
